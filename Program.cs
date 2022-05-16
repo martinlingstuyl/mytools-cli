@@ -22,14 +22,17 @@ namespace MyTools.CLI
 
             [Option('t', "till", Required = true, HelpText = "Ending page nummer.")]
             public int TillPage { get; set; }
-        }
+        }        
 
         static void Main(string[] args)
         {            
-            Console.WriteLine("Welcome to PDF tools v0.0.1");
+            Console.WriteLine("Welcome to MyTools CLI v0.0.1");
 
             var result = Parser.Default.ParseArguments<SectionOptions>(args)
-                .MapResult((SectionOptions opts) => RunSection(opts), HandleParseError);
+                .MapResult(
+                    (SectionOptions opts) => RunSection(opts),
+                    HandleParseError
+                );
 
             Console.WriteLine(result);
         }
